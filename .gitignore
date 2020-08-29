@@ -1,0 +1,5 @@
+#Pasta de deploy
+.vscode
+
+#Configurações da api
+appsettings.json
