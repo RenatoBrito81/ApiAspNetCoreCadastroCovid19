@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
-namespace ApiAspNetCoreCadastroCovid19
+namespace ApiAspNetCoreCadastroCovid19.Data
 {
     public class MongoDB
     {
