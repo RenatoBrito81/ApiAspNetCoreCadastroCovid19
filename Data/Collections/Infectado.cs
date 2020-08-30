@@ -7,6 +7,7 @@ namespace ApiAspNetCoreCadastroCovid19.Data.Collections
 {
     public class Infectado
     {
+        //Classe com a estrutura dos dados dos infectados
         public Infectado(String id, DateTime dataNascimento, string sexo, double latitude, double longitude)
         {
             this.Id = id;
