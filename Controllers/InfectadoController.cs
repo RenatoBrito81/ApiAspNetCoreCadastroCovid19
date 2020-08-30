@@ -1,6 +1,8 @@
+using System;
 using ApiAspNetCoreCadastroCovid19.Data.Collections;
 using ApiAspNetCoreCadastroCovid19.Models;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ApiAspNetCoreCadastroCovid19.Controllers
@@ -21,7 +23,7 @@ namespace ApiAspNetCoreCadastroCovid19.Controllers
         [HttpPost]
         public ActionResult SalvarInfectado([FromBody] InfectadoDto dto)
         {
-            var infectado = new Infectado(dto.DataNascimento, dto.Sexo, dto.Latitude, dto.Longitude);
+            var infectado = new Infectado(String.Empty, dto.DataNascimento, dto.Sexo, dto.Latitude, dto.Longitude);
 
             _infectadosCollection.InsertOne(infectado);
             
@@ -34,6 +36,30 @@ namespace ApiAspNetCoreCadastroCovid19.Controllers
             var infectados = _infectadosCollection.Find(Builders<Infectado>.Filter.Empty).ToList();
             
             return Ok(infectados);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult ObterInfectadorById(String id){
+            var infectados = _infectadosCollection.Find(Builders<Infectado>.Filter.Where(inf => inf.Id == id)).FirstOrDefault();
+
+            return Ok(infectados);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult AtualizarInfectadoById(String id, [FromBody] InfectadoDto dto){
+            var infectado = new Infectado(id, dto.DataNascimento, dto.Sexo, dto.Latitude, dto.Longitude);
+            var filtro = Builders<Infectado>.Filter.Where(inf => inf.Id == id);
+            _infectadosCollection.ReplaceOne(filtro, infectado);
+
+            return Ok("Infectado atualizado com sucesso.");
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeletarInfectadoById(String id){
+            var filtro = Builders<Infectado>.Filter.Where(inf => inf.Id == id);
+            _infectadosCollection.DeleteOne(filtro);
+
+            return Ok("Infectado deletado com sucesso.");
         }
     }
 }
