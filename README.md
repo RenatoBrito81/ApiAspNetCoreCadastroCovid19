@@ -8,12 +8,12 @@
 
 - Gráfico circular demonstrando os casos dos infectados por sexo:
 <p align="center">
-  <img src="GraficoCircularInfectados.jpg" title="Gráfico dos infectados dividido por sexo">
+  <img src="https://github.com/RenatoBrito81/ApiAspNetCoreCadastroCovid19/blob/master/GraficoCircularInfectados.JPG" title="Gráfico dos infectados dividido por sexo">
 </p>
 
 - Gráfico com a geolocalização dos infectados:
 <p align="center">
-  <img src="GraficoGeolocalizacaoInfectados.jpg" title="Gráfico com a localização dos infectados">
+  <img src="https://github.com/RenatoBrito81/ApiAspNetCoreCadastroCovid19/blob/master/GraficoGeolocalizacaoInfectados.JPG" title="Gráfico com a localização dos infectados">
 </p>
 
 
